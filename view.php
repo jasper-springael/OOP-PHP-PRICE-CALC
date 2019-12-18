@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>PHP price calc</title>
+    <meta name="description" content="A price calculator using json files as an object to retrieve data from">
 </head>
 <body>
     <?php
         include 'model.php';
         include 'controller.php';
-        //  var_dump($_POST);
-        //  var_dump($jsonDataCustomers);
-        //  var_dump($jsonDataProducts);
-        //  var_dump($jsonDataGroups);
- 
     ?>
     <form method="POST">
     <select name="customer-droplist">
@@ -35,16 +31,5 @@
     </select>
     <input type="submit" value="submit" method="POST" name="submit">
     </form>
-<?php
-
-//     function getVariables ($object,$i) {
-//         echo $object[$i]->id;
-//         echo $object[$i]->name;
-//         echo $object[$i]->group_id;
-//     }
-// getVariables($jsonDataCustomers,1);
-// echo $jsonDataCustomers[1]->name;
-?>
-    
 </body>
 </html>
