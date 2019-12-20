@@ -27,10 +27,13 @@ if (isset($_POST['submit'])) {
         echo 'Customer: '.$custSelect.'.</br>';
         echo 'Product: '.$prodSelect.'.</br>';
         echo 'Base price: '.$prodPrice.'&#8364</br>';
-        echo 'Applied fixed discounts:</br>';
-        foreach ($fixedDiscounts as $value) {
-        echo $value.'&#8364</br>';
-        }
+        if (!empty($fixedDiscounts)) {
+            echo 'Applied fixed discounts: ';
+            foreach ($fixedDiscounts as $value) {
+                echo $value.'&#8364 ';
+            }
+            echo '</br>';
+        } else echo 'Applied fixed discounts: None</br>';
         echo 'Total fixed discounts: '.$finalFixed.'&#8364</br>';
         echo 'Applied variable discounts: '.$finalVar.'%</br>';
         echo 'Price after discounts: '.$finalPrice.'&#8364</br>';
