@@ -26,14 +26,14 @@ if (isset($_POST['submit'])) {
         applyDiscounts();
         echo 'Customer: '.$custSelect.'.</br>';
         echo 'Product: '.$prodSelect.'.</br>';
-        echo 'Base price: '.$prodPrice.'</br>';
+        echo 'Base price: '.$prodPrice.'&#8364</br>';
         echo 'Applied fixed discounts:</br>';
         foreach ($fixedDiscounts as $value) {
-        echo $value.'</br>';
+        echo $value.'&#8364</br>';
         }
-        echo 'Total fixed discounts: '.$finalFixed.'</br>';
+        echo 'Total fixed discounts: '.$finalFixed.'&#8364</br>';
         echo 'Applied variable discounts: '.$finalVar.'%</br>';
-        echo 'Price after discounts: '.$finalPrice.'</br>';
+        echo 'Price after discounts: '.$finalPrice.'&#8364</br>';
     } else { echo 'Please select a customer and a product.';
     }
 }
@@ -58,8 +58,13 @@ function applyDiscounts() {
     global $prodPrice;
     global $finalPrice;
 
-    $finalFixed = array_sum($fixedDiscounts);
-    $finalVar = max($variableDiscounts);
+    if (!empty($variableDiscounts)) {
+        $finalVar  = max($variableDiscounts);
+    } else $finalVar = 0;
+    if (!empty($fixedDiscounts)) {
+        $finalFixed = array_sum($fixedDiscounts);
+    } else $finalFixed = 0;
+
     $prodPriceAfterFixed=$prodPrice-$finalFixed;
     $prodPriceAfterVar=$prodPriceAfterFixed*$finalVar/100;
     $prodPriceAfterDiscounts= round($prodPriceAfterFixed-$prodPriceAfterVar,2);
@@ -91,5 +96,6 @@ function findDiscounts($ID) {
                 }
             }
         }
-    }
+}
+
 ?>
